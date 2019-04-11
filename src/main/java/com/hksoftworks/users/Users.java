@@ -3,7 +3,7 @@ package com.hksoftworks.users;
 import java.io.Serializable;
 
 public class Users implements Serializable {
-
+	
 	private int empId;
 	private String lastName;
 	private String firstName;
