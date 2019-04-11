@@ -1,1 +1,4 @@
+com\hksoftworks\util\HibernateUtil.class
+com\hksoftworks\users\Users.class
 com\hksoftworks\JDBC\JDBCExecutor.class
+com\hksoftworks\dao\UserDAO.class
