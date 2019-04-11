@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 public class Users implements Serializable {
 
-	private int userId;
+	private int empId;
 	private String lastName;
 	private String firstName;
 	private String email;
+	private String pass;
 	private int managerId;
 	
 	public Users() {
@@ -15,21 +16,22 @@ public class Users implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Users(int userId, String lastName, String firstName, String email, int managerId) {
+	public Users(int empId, String lastName, String firstName, String email, String pass, int managerId) {
 		super();
-		this.userId = userId;
+		this.empId = empId;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.email = email;
+		this.pass = pass;
 		this.managerId = managerId;
 	}
 
-	public int getUserId() {
-		return userId;
+	public int getEmpId() {
+		return empId;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setEmprId(int empId) {
+		this.empId = empId;
 	}
 
 	public String getLastName() {
@@ -55,6 +57,14 @@ public class Users implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getPass(String pass) {
+		return pass;
+	}
+	
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
 
 	public int getManagerId() {
 		return managerId;
@@ -66,8 +76,8 @@ public class Users implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Users [userId=" + userId + ", lastName=" + lastName + ", firstName=" + firstName + ", email=" + email
-				+ ", managerId=" + managerId + "]";
+		return "Users [empId=" + empId + ", lastName=" + lastName + ", firstName=" + firstName + ", email=" + email
+				+ "pass=" + pass + ", managerId=" + managerId + "]";
 	}
 	
 	
