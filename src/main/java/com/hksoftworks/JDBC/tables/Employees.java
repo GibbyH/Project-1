@@ -6,16 +6,26 @@ import java.sql.SQLException;
 public class Employees {
 
 	public static void displayData(ResultSet rs) throws SQLException {
-		while (rs.next()) {
-			StringBuffer buffer = new StringBuffer();
+		
+		rs.last();
+		int nRows = rs.getRow();
+		if(nRows == 0)
+			System.out.println("No records found.");
+		else {
+			System.out.println("Number of employee records: " + nRows);
+			rs.beforeFirst();
 			
-			buffer.append("Employee " + rs.getInt("EMP_ID") + ": ");
-			buffer.append(rs.getString("LAST_NAME") + ", ");
-			buffer.append(rs.getString("FIRST_NAME") + ", ");
-//			buffer.append(rs.getString("Email") + ", ");
-//			buffer.append(rs.getInt("MANAGER_ID"));
-			
-			System.out.println(buffer.toString());
+			while (rs.next()) {
+				StringBuffer buffer = new StringBuffer();
+				
+				buffer.append("Employee " + rs.getInt("EMP_ID") + ": ");
+				buffer.append(rs.getString("LAST_NAME") + ", ");
+				buffer.append(rs.getString("FIRST_NAME") + ", ");
+				buffer.append(rs.getString("EMAIL") + ", ");
+				buffer.append(rs.getInt("MANAGER_ID"));
+				
+				System.out.println(buffer.toString());
+			}
 		}
 	}
 }
