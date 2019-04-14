@@ -4,36 +4,49 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.hksoftworks.JDBC.tables.Employees;
+import com.hksoftworks.JDBC.tables.EmployeeManager;
+import com.hksoftworks.beans.Employee;
 import com.hksoftworks.util.InputHelper;
 
 public class ConnectDB {
 	
-	private static final String SQL = "SELECT * FROM employees WHERE last_name = ?";
-
 	public static void main(String[] args) throws SQLException {
 		
-		ResultSet rs = null;
+		System.out.println("App started!");
 		
-		String lastName;
-		try {
-			lastName = InputHelper.getInput("Enter last name: ");
-		} catch (NullPointerException e) {
-			System.err.println("Error: That person has left the building.");
+		ConnectionManager.getInstance();
+		
+		EmployeeManager.displayAllRows();
+		
+		int empId = InputHelper.getIntergerInput("Select a row to update: ");
+		
+		Employee emp = EmployeeManager.getRow(empId);
+		if(emp ==null) {
+			System.err.println("Row not found.");
 			return;
 		}
 		
-		try (
-				Connection conn = DBUtil.getConnection();
-				PreparedStatement stmt = conn.prepareStatement(SQL,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-				
-				){
-			stmt.setString(1, lastName);
-			rs = stmt.executeQuery();
-			Employees.displayData(rs);
-		} catch (SQLException e) {
-			DBUtil.processException(e);
-		} 
+		String lastName = InputHelper.getInput("Enter new last name: ");
+		emp.setLastName(lastName);
+		
+		String firstName = InputHelper.getInput("Enter new first name: ");
+		emp.setFirstName(firstName);
+		
+		String email = InputHelper.getInput("Enter new email: ");
+		emp.setEmail(email);
+		
+		String pass = InputHelper.getInput("Enter new password: ");
+		emp.setPass(pass);
+		
+		int managerId = InputHelper.getIntergerInput("Enter new manager ID: ");
+		emp.setManagerId(managerId);
+		
+		if(EmployeeManager.update(emp))
+			System.out.println("Excelsior!");
+		else
+			System.err.println("Hulk sad.");
+		
+		ConnectionManager.getInstance().close();
 	}
 }
 

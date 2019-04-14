@@ -18,9 +18,15 @@ public class InputHelper {
 		}
 	}
 	
-	public static double getDoubleInput(String prompt) {
+	public static double getDoubleInput(String prompt) throws NumberFormatException {
 		
 		String input = getInput(prompt);
 		return Double.parseDouble(input);
+	}
+	
+	public static int getIntergerInput (String prompt) throws NumberFormatException {
+		
+		String input = getInput(prompt);
+		return Integer.parseUnsignedInt(input);
 	}
 }
