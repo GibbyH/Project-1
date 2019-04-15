@@ -8,20 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;;
+import org.apache.log4j.Logger;
 
 /**
- * Servlet implementation class FrontController
+ * Servlet implementation class Login
  */
-public class FrontController extends HttpServlet {
-	private static final Logger log = Logger.getLogger(FrontController.class);
+public class Login extends HttpServlet {
+	private static final Logger log = Logger.getLogger(Login.class);
 	
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FrontController() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,23 +30,15 @@ public class FrontController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.info("Front controller working");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 		
-		String uri = request.getRequestURI();
-		String[] uriPieces = uri.split("/");
-		String lastPiece = uriPieces[uriPieces.length - 1];
-		String servletName = lastPiece.substring(0, lastPiece.length() - 3).toLowerCase();
-		
-		switch (servletName) {
-		case "Login":
-			request.getRequestDispatcher("Login").forward(request, response);
-			break;
-
-		default:
+		if (username == null || username == "" || password == null || password == "") {
 			response.setContentType("text/plain");
-			PrintWriter out = response.getWriter();
-			out.write("Requested servlet doesn't exist.");
-			break;
+			PrintWriter writing  = response.getWriter();
+			writing.write("Username or password incorrect");
+		} else {
+			response.sendRedirect("./homepagemanager.html");
 		}
 	}
 
