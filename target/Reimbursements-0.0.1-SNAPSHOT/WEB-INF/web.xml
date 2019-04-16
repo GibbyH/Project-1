@@ -9,4 +9,54 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>FrontController</display-name>
+    <servlet-name>FrontController</servlet-name>
+    <servlet-class>com.hksoftworks.servlets.FrontController</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FrontController</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.hksoftworks.servlets.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AuthenticationFilter</display-name>
+    <servlet-name>AuthenticationFilter</servlet-name>
+    <servlet-class>com.hksoftworks.filters.AuthenticationFilter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthenticationFilter</servlet-name>
+    <url-pattern>/AuthenticationFilter</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>AuthenticationFilter</display-name>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>com.hksoftworks.filters.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/AuthenticationFilter</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>JSession</display-name>
+    <servlet-name>JSession</servlet-name>
+    <servlet-class>com.hksoftworks.session.JSession</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JSession</servlet-name>
+    <url-pattern>/JSession</url-pattern>
+  </servlet-mapping>
 </web-app>

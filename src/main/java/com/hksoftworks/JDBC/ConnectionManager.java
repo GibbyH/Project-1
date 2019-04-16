@@ -1,59 +1,39 @@
 package com.hksoftworks.JDBC;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class ConnectionManager {
 	
-	private static ConnectionManager instance = null;
+	private static final Properties props = getJdbcProperties();
 	
-	private final String USERNAME = "SYS as SYSDBA";
-	private final String PASSWORD = "Revature123";
-	private final String CONN_STRING = "jdbc:oracle:thin:@localhost:1521:ORCL";
-	
-	private Connection conn = null;
-	
-	private ConnectionManager() {
-		
-	}
-	
-	public static ConnectionManager getInstance() {
-		if(instance == null)
-			instance = new ConnectionManager();
-		return instance;
-	}
-	
-	private boolean openConnection() {
+	public static Connection getConnection() {
 		try {
-			conn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
-			return true;
+			return DriverManager.getConnection(props.getProperty("jdbc.url"), 
+					props.getProperty("jdbc.username"), 
+					props.getProperty("jdbc.password"));
 		} catch (SQLException e) {
-			System.err.println(e);
-			return false;
-		}
+			System.err.println("SQL State: " + e.getSQLState());
+			System.err.println("Error Code: " + e.getErrorCode());
+			throw new RuntimeException("Failed to get database connection!");
+		} 
 	}
 	
-	public Connection getConnection()
-	{
-		if (conn == null) {
-			if (openConnection()) {
-				System.out.println("Connection opened");
-				return conn;
-			} else {
-				return null;
-			}
-		}
-		return conn;
-	}
-	
-	public void close() {
-		System.out.println("Closing connection.");
+	private static Properties getJdbcProperties() {
+		Properties props = new Properties();
 		try {
-			conn.close();
-			conn = null;
-		} catch (Exception e) {
-			
+			//Gets connection to src/main/resources
+			props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties"));
+		} catch (IOException e) {
+			throw new RuntimeException("Failed to load application.properties!");
 		}
+		return props;
 	}
+	
+//	public static void main(String[] args) {
+//		System.out.println(ConnectionManager.getConnection());
+//	}
 }

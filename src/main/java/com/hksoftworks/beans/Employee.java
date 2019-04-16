@@ -1,7 +1,5 @@
 package com.hksoftworks.beans;
 
-import java.io.Serializable;
-
 public class Employee {
 
 	private int empId;
@@ -11,6 +9,19 @@ public class Employee {
 	private String pass;
 	private int managerId;
 	
+	public Employee(int empId, String lastName, String firstName, String email, String pass, int managerId) {
+		super();
+		this.empId = empId;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.email = email;
+		this.pass = pass;
+		this.managerId = managerId;
+	}
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getEmpId() {
 		return empId;
 	}

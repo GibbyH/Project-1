@@ -38,7 +38,7 @@ public class FrontController extends HttpServlet {
 		String servletName = lastPiece.substring(0, lastPiece.length() - 3).toLowerCase();
 		
 		switch (servletName) {
-		case "Login":
+		case "login":
 			request.getRequestDispatcher("Login").forward(request, response);
 			break;
 

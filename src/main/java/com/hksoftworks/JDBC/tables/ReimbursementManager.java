@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.hksoftworks.JDBC.DBUtil;
+import com.hksoftworks.JDBC.ConnectionManager;
 
 public class ReimbursementManager {
 	
@@ -14,7 +14,7 @@ public class ReimbursementManager {
 		String sql = "SELECT request_num, emp_Id, amount, submitted, status FROM reimbursements";
 		
 		try (
-			Connection conn = DBUtil.getConnection();
+			Connection conn = ConnectionManager.getConnection();
 			Statement stmt= conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 				){
