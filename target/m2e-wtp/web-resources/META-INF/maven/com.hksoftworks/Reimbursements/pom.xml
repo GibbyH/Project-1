@@ -56,27 +56,17 @@
         <artifactId>ojdbc6</artifactId>
         <version>11.2.0</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-annotations -->
 	<dependency>
-	    <groupId>org.hibernate</groupId>
-	    <artifactId>hibernate-annotations</artifactId>
-	    <version>3.5.6-Final</version>
-	</dependency>
-   	<dependency>
 		<groupId>javax.servlet</groupId>
 		<artifactId>javax.servlet-api</artifactId>
 		<version>4.0.1</version>
 		<scope>provided</scope>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 	<dependency>
-		<groupId>com.fasterxml.jackson.core</groupId>
-		<artifactId>jackson-core</artifactId>
-		<version>2.9.8</version>
-	</dependency>
-	<dependency>
-		<groupId>com.fasterxml.jackson.core</groupId>
-		<artifactId>jackson-databind</artifactId>
-		<version>2.9.8</version>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.9.8</version>
 	</dependency>
 	<dependency>
 		<groupId>log4j</groupId>

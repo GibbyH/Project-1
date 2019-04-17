@@ -1,28 +1,30 @@
 <DOCTYPE! html>
     <html>
-        <head>
-            <link rel="stylesheet" type="text/css"
-				href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-			<script src="http://code.jquery.com/jquery-3.3.1.min.js"
-				integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-				crossorigin="anonymous"></script>
-			<script
-				src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        </head>
-        <body>
-            <h1>Welcome to HK Softworks</h1>
-            <div>
-                <form method="post" action="./Login.do">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username"/><br>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password"/><br>
-                    <label for="role">Role</label><br>
-                    <input type="radio" id="manager" name="role" value="manager">Manager</input>
-                    <input type="radio" id="associate" name="role" value="associate">Associate</input>
-                    <br><input type="submit" name="login" id="Login" value="Login">
-                </form>
-            </div>
-        </body>
+
+    <head>
+        <link rel="stylesheet" type="text/css"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="./main.js" ></script>
+    </head>
+
+    <body>
+        <h1>Welcome to HK Softworks</h1>
+        <div>
+            <form method="post" action="./Login">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" /><br>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" /><br>
+                <label for="role">Role</label><br>
+                <input type="radio" id="manager" name="role" value="manager">Manager</input>
+                <input type="radio" id="associate" name="role" value="associate">Associate</input>
+                <br><input type="submit" name="login" id="Login" value="Login">
+            </form>
+        </div>
+    </body>
+
     </html>
-</DOCTYPE>
+    </DOCTYPE>

@@ -9,17 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>FrontController</display-name>
-    <servlet-name>FrontController</servlet-name>
-    <servlet-class>com.hksoftworks.servlets.FrontController</servlet-class>
-    <load-on-startup>0</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>FrontController</servlet-name>
-    <url-pattern>*.do</url-pattern>
-  </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>Login</display-name>
@@ -40,15 +30,7 @@
     <servlet-name>AuthenticationFilter</servlet-name>
     <url-pattern>/AuthenticationFilter</url-pattern>
   </servlet-mapping>
-  <filter>
-    <display-name>AuthenticationFilter</display-name>
-    <filter-name>AuthenticationFilter</filter-name>
-    <filter-class>com.hksoftworks.filters.AuthenticationFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>AuthenticationFilter</filter-name>
-    <url-pattern>/AuthenticationFilter</url-pattern>
-  </filter-mapping>
+  
   <servlet>
     <description></description>
     <display-name>JSession</display-name>
@@ -58,5 +40,15 @@
   <servlet-mapping>
     <servlet-name>JSession</servlet-name>
     <url-pattern>/JSession</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetEmpServlet</display-name>
+    <servlet-name>GetEmpServlet</servlet-name>
+    <servlet-class>com.hksoftworks.web.GetEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEmpServlet</servlet-name>
+    <url-pattern>/GetEmpServlet</url-pattern>
   </servlet-mapping>
 </web-app>
