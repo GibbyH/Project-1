@@ -15,7 +15,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	
 	@Override
 	public List<Employee> getAllEmployees() {
-		List<Employee> emps = new ArrayList();
+		List<Employee> emps = new ArrayList<>();
 		try (Connection conn = ConnectionManager.getConnection()){
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM employees");
@@ -121,9 +121,21 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public Employee getEmployeeByEmailAndPassword(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean getEmployeeByEmailAndPassword(String username, String password) {
+		Employee emp = new Employee();
+		boolean status = false;
+		try(Connection conn = ConnectionManager.getConnection()){
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM employees WHERE email = ? and pass = ?");
+			
+			stmt.setString(1, username);
+			stmt.setString(2,  password);
+			
+			ResultSet rs = stmt.executeQuery();
+			status = rs.next();
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		return status;
 	}	
 	
 //	public static void main(String[] args) {

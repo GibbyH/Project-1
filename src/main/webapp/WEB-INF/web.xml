@@ -9,7 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <description></description>
     <display-name>Login</display-name>
@@ -30,7 +29,6 @@
     <servlet-name>AuthenticationFilter</servlet-name>
     <url-pattern>/AuthenticationFilter</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>JSession</display-name>
@@ -50,5 +48,25 @@
   <servlet-mapping>
     <servlet-name>GetEmpServlet</servlet-name>
     <url-pattern>/GetEmpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.hksoftworks.web.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WelcomeServlet</display-name>
+    <servlet-name>WelcomeServlet</servlet-name>
+    <servlet-class>com.hksoftworks.web.WelcomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WelcomeServlet</servlet-name>
+    <url-pattern>/WelcomeServlet</url-pattern>
   </servlet-mapping>
 </web-app>
