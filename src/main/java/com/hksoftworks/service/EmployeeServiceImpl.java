@@ -33,15 +33,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}	
 	}
 
-	@Override
-	public Employee getLoginCredetials(HttpServletRequest request, HttpServletResponse response) {
-		
-		try {
-			Employee employee = mapper.readValue(request.getInputStream(), Employee.class);
-			return null;
-		} catch (IOException e) {
-			return null;
-		}
-	}
+	
 
 }

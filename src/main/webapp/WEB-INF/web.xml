@@ -69,4 +69,14 @@
     <servlet-name>WelcomeServlet</servlet-name>
     <url-pattern>/WelcomeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateEmpServlet</display-name>
+    <servlet-name>CreateEmpServlet</servlet-name>
+    <servlet-class>com.hksoftworks.web.CreateEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateEmpServlet</servlet-name>
+    <url-pattern>/CreateEmpServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

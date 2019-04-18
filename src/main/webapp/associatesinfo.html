@@ -3,7 +3,7 @@
     <head>
         <title>ABC CO.</title>
         <link rel="stylesheet" type="text/css" href="bootstrap3.4.0.css"></style>
-        <script src="main.js"></script>
+        
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -22,7 +22,7 @@
         </nav>
         <div>
             <h1>Associate info</h1>
-            <input type="button" name="new_employee" value="New Associate" id="">
+            <a href="newemployee.html"> <input type="button" name="new_employee" value="New Associate"></a>
             <input type="button" name="get_emplyoees" value="Get Employees" id="get_employees" onclick="getEmps()"/>
             <table class="table" >
                 <thead>
@@ -30,18 +30,16 @@
 	                    <th>Id</th>
 	                    <th>First Name</th>
 	                    <th>Last Name</th>
-	                    <th>Hire Date</th>
 	                    <th>Email</th>
 	                    <th>password</th>
 	                    <th>Manager Id</th>
-	                    <th>Details</th>
-                    </tr>
+	                </tr>
                 </thead>
                 <tbody id="empTable">
                     
                 </tbody>
             </table>
         </div>
-
+        <script src="main.js"></script>
     </body>
 </html>
