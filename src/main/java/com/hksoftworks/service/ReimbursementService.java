@@ -10,4 +10,5 @@ import com.hksoftworks.model.Reimbursement;
 public interface ReimbursementService {
 
 	List<Reimbursement> getAllReimbursements (HttpServletRequest request, HttpServletResponse response);
+	Reimbursement createNewReimb(HttpServletRequest request, HttpServletResponse response);
 }

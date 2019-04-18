@@ -1,6 +1,7 @@
 package com.hksoftworks.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,7 +46,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			stmt.setInt(1, reimb.getRequestNum());
 			stmt.setInt(2, reimb.getEmpId());
 			stmt.setDouble(3, reimb.getAmount());
-//			stmt.setDate(4, reimb.getSubmitted());
+			stmt.setDate(4, (Date) reimb.getSubmitted());
 			stmt.setString(5, reimb.getStatus());
 			
 			
@@ -69,6 +70,19 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	public long deleteReimbursement(Reimbursement... reimbToBeDeleted) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<Reimbursement> getAllReimbursements(String email) {
+		List<Reimbursement> reimbs = new ArrayList<Reimbursement>();
+		try(Connection conn = ConnectionManager.getConnection()){
+			PreparedStatement stmt = conn.prepareStatement("SELECT * from ");
+			
+			return reimbs;
+		} catch (Exception e){
+			
+		}
+		return null;
 	}
 
 

@@ -13,7 +13,7 @@ const createReimb = () => {
 		}
 	}
 	
-	xhr.open("POST", "http://localhost:4213/Reimbursements/CreateEmpServlet");
+	xhr.open("POST", "http://localhost:4213/Reimbursements/CreateReimbServlet");
 	xhr.send(JSON.stringify(createReimbForm));
 }
 
@@ -22,8 +22,7 @@ const parseCreateReimbForm = () => {
 	const rqstText = document.getElementById("rqstId").value;
 	const empIdText = document.getElementById("empId").value;
 	const amountText = document.getElementById("amount").value;
-	const submittedText = document.getElementById("submitted").value;
-
+	
 	return {
 		requestNum: rqstText,
 		empId: empIdText,
