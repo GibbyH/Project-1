@@ -1,13 +1,14 @@
 package com.hksoftworks.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Reimbursement {
 
 	private int requestNum;
 	private int empId;
 	private double amount;
-	private String submitted;
+	private Date submitted;
 	private String status;
 	
 	public Reimbursement() {
@@ -15,7 +16,7 @@ public class Reimbursement {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Reimbursement(int requestNum, int empId, double amount, String submitted, String status) {
+	public Reimbursement(int requestNum, int empId, double amount, Date submitted, String status) {
 		super();
 		this.requestNum = requestNum;
 		this.empId = empId;
@@ -42,10 +43,10 @@ public class Reimbursement {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public String getSubmitted() {
+	public Date getSubmitted() {
 		return submitted;
 	}
-	public void setSubmitted(String submitted) {
+	public void setSubmitted(Date submitted) {
 		this.submitted = submitted;
 	}
 	public String getStatus() {

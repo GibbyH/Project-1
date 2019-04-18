@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("Username: " + n + " | Password: " + p);
 		
 		if(dao.getEmployeeByEmailAndPassword(n, p)){
-			RequestDispatcher rd = request.getRequestDispatcher("homepagemanager.html");
+			RequestDispatcher rd = request.getRequestDispatcher("/homepagemanager.html");
 			rd.forward(request, response);
 		} 
 		else {

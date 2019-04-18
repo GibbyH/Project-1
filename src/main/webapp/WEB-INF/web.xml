@@ -79,4 +79,24 @@
     <servlet-name>CreateEmpServlet</servlet-name>
     <url-pattern>/CreateEmpServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetReimbursementsServlet</display-name>
+    <servlet-name>GetReimbursementsServlet</servlet-name>
+    <servlet-class>com.hksoftworks.web.GetReimbursementsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetReimbursementsServlet</servlet-name>
+    <url-pattern>/GetReimbursementsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateReimbServlet</display-name>
+    <servlet-name>CreateReimbServlet</servlet-name>
+    <servlet-class>com.hksoftworks.web.CreateReimbServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateReimbServlet</servlet-name>
+    <url-pattern>/CreateReimbServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -12,9 +12,9 @@ import com.hksoftworks.util.ConnectionManager;
 
 public interface ReimbursementDao {
 	
-	List<Reimbursement> getAllEmployees();
-	Reimbursement getEmployeeById(int id);
-	Reimbursement createEmployee(Reimbursement emp);
-	Reimbursement updateEmployee(Reimbursement empToBeUpdated);
-	long deleteEmployee(Reimbursement... empToBeDeleted);
+	List<Reimbursement> getAllReimbursements();
+	Reimbursement getReimbursementById(int id);
+	Reimbursement createReimbursement(Reimbursement reimb);
+	Reimbursement updatereimburseement(Reimbursement reimbToBeUpdated);
+	long deleteReimbursement(Reimbursement... reimbToBeDeleted);
 }
