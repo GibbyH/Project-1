@@ -45,15 +45,12 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			PreparedStatement stmt = conn.prepareStatement("INSERT INTO reimbursements (REQUEST_NUM, " +
 			"EMP_ID, AMOUNT, SUMBITTED, STATUS) VALUES(?, ?, ?, ?, ?)");
 			
-			//Set values of out insert statements
 			stmt.setInt(1, reimb.getRequestNum());
 			stmt.setInt(2, reimb.getEmpId());
 			stmt.setDouble(3, reimb.getAmount());
 			stmt.setDate(4, (Date) reimb.getSubmitted());
 			stmt.setString(5, reimb.getStatus());
 			
-			
-			// Execute the query determining the number of rows that where affected
 			int rowsAffected = stmt.executeUpdate();
 			if (rowsAffected == 1)
 				return reimb;
@@ -66,9 +63,15 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	@Override
 	public Reimbursement updatereimburseement(Reimbursement reimbToBeUpdated) {
 		try(Connection conn = ConnectionManager.getConnection()){
-			PreparedStatement stmt = conn.prepareStatement("UPDATE reimbursements SET status = ? WHERE REQUEST_NUM = ?");
-			stmt.setString(1, reimbToBeUpdated.getStatus());
-			stmt.setInt(5, reimbToBeUpdated.getRequestNum());
+			PreparedStatement stmt = conn.prepareStatement("UPDATE reimbursements SET emp_id = ?, amount = ?, submitted  = ?, status = ?" 
+					+ " WHERE REQUEST_NUM = ?");
+			
+			stmt.setInt(1, reimbToBeUpdated.getRequestNum());
+			stmt.setInt(2, reimbToBeUpdated.getRequestNum());		
+			stmt.setDouble(3, reimbToBeUpdated.getAmount());
+			stmt.setDate(4, (Date) reimbToBeUpdated.getSubmitted());
+			stmt.setString(5, reimbToBeUpdated.getStatus());
+			
 			int rowsAffected = stmt.executeUpdate();
 			if(rowsAffected == 1) {
 				return reimbToBeUpdated;
