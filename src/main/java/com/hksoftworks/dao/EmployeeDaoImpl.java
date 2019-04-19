@@ -86,14 +86,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public Employee updateEmployee(Employee empToBeUpdated) {
 		
 		try(Connection conn = ConnectionManager.getConnection()){
-			PreparedStatement stmt = conn.prepareStatement("UPDATE employees SET id = ?, last_name = ?, first_name = ?, " +
-		"email = ?, pass = ?, manager id = ?");
-			stmt.setInt(1, empToBeUpdated.getEmpId());
-			stmt.setString(2, empToBeUpdated.getLastName());
-			stmt.setString(3, empToBeUpdated.getFirstName());
-			stmt.setString(4, empToBeUpdated.getEmail());
-			stmt.setString(5, empToBeUpdated.getPass());
-			stmt.setInt(6, empToBeUpdated.getManagerId());
+			PreparedStatement stmt = conn.prepareStatement("UPDATE employees SET last_name = ?, first_name = ?, " +
+		"email = ?, pass = ?, manager id = ? WHERE emp id =?" );
+			stmt.setString(1, empToBeUpdated.getLastName());
+			stmt.setString(2, empToBeUpdated.getFirstName());
+			stmt.setString(3, empToBeUpdated.getEmail());
+			stmt.setString(4, empToBeUpdated.getPass());
+			stmt.setInt(5, empToBeUpdated.getManagerId());
+			stmt.setInt(6, empToBeUpdated.getEmpId());
 			
 			// Execute the query determining the number of rows that where affected
 			int rowsAffected = stmt.executeUpdate();
@@ -136,6 +136,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			System.err.println(e);
 		}
 		return status;
+	}
+
+	@Override
+	public boolean isManager(Employee emp) {
+		return false;
 	}	
 	
 //	public static void main(String[] args) {

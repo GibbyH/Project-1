@@ -11,6 +11,7 @@ public interface EmployeeService {
 	
 	List<Employee> getAllEmployees (HttpServletRequest request, HttpServletResponse response);
 	Employee createEmployee (HttpServletRequest request, HttpServletResponse response);
+	Employee updateEmployee (HttpServletRequest request, HttpServletResponse response);
 	
 
 }

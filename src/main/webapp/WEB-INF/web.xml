@@ -99,4 +99,34 @@
     <servlet-name>CreateReimbServlet</servlet-name>
     <url-pattern>/CreateReimbServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateEmpServlet</display-name>
+    <servlet-name>UpdateEmpServlet</servlet-name>
+    <servlet-class>com.hksoftworks.web.UpdateEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateEmpServlet</servlet-name>
+    <url-pattern>/UpdateEmpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>com.hksoftworks.web.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateReimbServlet</display-name>
+    <servlet-name>UpdateReimbServlet</servlet-name>
+    <servlet-class>com.hksoftworks.web.UpdateReimbServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateReimbServlet</servlet-name>
+    <url-pattern>/UpdateReimbServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

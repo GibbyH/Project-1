@@ -32,4 +32,15 @@ public class ReimburesmentServiceImpl implements ReimbursementService{
 		}
 	}
 
+	@Override
+	public Reimbursement updateReimbStatus(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			Reimbursement reimb = mapper.readValue(request.getInputStream(), Reimbursement.class);
+			return dao.updatereimburseement(reimb);
+		} catch (IOException e) {
+			System.err.println(e);
+		}
+		return null;
+	}
+
 }

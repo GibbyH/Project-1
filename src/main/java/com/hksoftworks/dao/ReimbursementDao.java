@@ -15,6 +15,7 @@ public interface ReimbursementDao {
 	List<Reimbursement> getAllReimbursements();
 	List<Reimbursement> getAllReimbursements(String email);
 	Reimbursement getReimbursementById(int id);
+	Reimbursement getReimbByEmpId (int id);
 	Reimbursement createReimbursement(Reimbursement reimb);
 	Reimbursement updatereimburseement(Reimbursement reimbToBeUpdated);
 	long deleteReimbursement(Reimbursement... reimbToBeDeleted);

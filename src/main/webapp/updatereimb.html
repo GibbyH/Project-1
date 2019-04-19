@@ -5,17 +5,18 @@
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     </head>
     <body>
-        <h1>Create Reimbursement Request</h1>
+        <h1>Approve Reimbursement</h1>
         <form class="form">
             <label for="rqstId">Request Number</label><br>
             <input type="number" id="rqstId" name="rqstId"><br>
-            <label for="empId">employee Id</label><br>
-            <input type="number" name="empId" id="empId"><br>
-            <label for="amount">Dollar Amount</label><br>
-            <input type="number" name="amount" id="amount"><br>
-            <button type="button" id="createRqst" >Create</button>
+            <select name="status" id="status">
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="denied">Denied</option>
+            </select>
+            <input type="button" name="submit" id="submit" value="Submit Change">
         </form>
         <a href="reimbursements.html"><button>Back</button></a>
-        <script src="newreimb.js" ></script>
+        <script src="updatereimb.js" ></script>
     </body>
 </html>

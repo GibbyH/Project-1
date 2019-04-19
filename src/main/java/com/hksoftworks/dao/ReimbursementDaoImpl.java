@@ -9,10 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+ 
 import com.hksoftworks.model.Reimbursement;
 import com.hksoftworks.util.ConnectionManager;
 
 public class ReimbursementDaoImpl implements ReimbursementDao {
+	
+	
 
 	@Override
 	public List<Reimbursement> getAllReimbursements() {
@@ -62,7 +65,17 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 	@Override
 	public Reimbursement updatereimburseement(Reimbursement reimbToBeUpdated) {
-		// TODO Auto-generated method stub
+		try(Connection conn = ConnectionManager.getConnection()){
+			PreparedStatement stmt = conn.prepareStatement("UPDATE reimbursements SET status = ? WHERE REQUEST_NUM = ?");
+			stmt.setString(1, reimbToBeUpdated.getStatus());
+			stmt.setInt(5, reimbToBeUpdated.getRequestNum());
+			int rowsAffected = stmt.executeUpdate();
+			if(rowsAffected == 1) {
+				return reimbToBeUpdated;
+			}
+		} catch (SQLException e) {
+			System.err.println(e);
+		}
 		return null;
 	}
 
@@ -76,13 +89,35 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	public List<Reimbursement> getAllReimbursements(String email) {
 		List<Reimbursement> reimbs = new ArrayList<Reimbursement>();
 		try(Connection conn = ConnectionManager.getConnection()){
-			PreparedStatement stmt = conn.prepareStatement("SELECT * from ");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * from reimbursements");
+			
 			
 			return reimbs;
 		} catch (Exception e){
 			
 		}
 		return null;
+	}
+
+	@Override
+	public Reimbursement getReimbByEmpId(int id) {
+		Reimbursement reimb = new Reimbursement();
+		try(Connection conn = ConnectionManager.getConnection()){
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery("Select * from reimbursement where emp_id = ?");
+			if(rs.next()) {
+				reimb.setRequestNum(rs.getInt("REQUEST_NUM"));
+				reimb.setEmpId(rs.getInt("EMP_ID"));
+				reimb.setAmount(rs.getDouble("AMOUNT"));
+				reimb.setSubmitted(rs.getDate("SUMBITTED"));
+				reimb.setStatus(rs.getString("STATUS"));
+				return reimb;
+			}
+		} catch (SQLException e) {
+			
+		}
+		return reimb;
 	}
 
 
