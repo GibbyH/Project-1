@@ -24,13 +24,14 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM reimbursements");
 			while (rs.next()) {
-				reimbs.add(new Reimbursement(rs.getInt("REQUEST_NUM"), rs.getInt("EMP_ID"), rs.getDouble("AMOUNT"),
-						rs.getDate("SUMBITTED"), rs.getString("STATUS")));
+				reimbs.add(new Reimbursement(rs.getInt("REQUEST_NUM"), rs.getInt("EMP_ID"), rs.getString("reason"),
+						rs.getDouble("AMOUNT"),	rs.getInt("manager_id"), rs.getString("STATUS")));
 			}
+			return reimbs;
 		} catch (SQLException e) {
 			System.err.println(e);
 		}
-			return reimbs;
+		return null;
 	}
 
 	@Override
@@ -41,44 +42,13 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 	@Override
 	public Reimbursement createReimbursement(Reimbursement reimb) {
-		try(Connection conn = ConnectionManager.getConnection()){
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO reimbursements (REQUEST_NUM, " +
-			"EMP_ID, AMOUNT, SUMBITTED, STATUS) VALUES(?, ?, ?, ?, ?)");
-			
-			stmt.setInt(1, reimb.getRequestNum());
-			stmt.setInt(2, reimb.getEmpId());
-			stmt.setDouble(3, reimb.getAmount());
-			stmt.setDate(4, (Date) reimb.getSubmitted());
-			stmt.setString(5, reimb.getStatus());
-			
-			int rowsAffected = stmt.executeUpdate();
-			if (rowsAffected == 1)
-				return reimb;
-		} catch (SQLException e) {
-			System.err.println(e);;
-		}
-		return reimb;
+		
+		return null;
 	}
 
 	@Override
 	public Reimbursement updatereimburseement(Reimbursement reimbToBeUpdated) {
-		try(Connection conn = ConnectionManager.getConnection()){
-			PreparedStatement stmt = conn.prepareStatement("UPDATE reimbursements SET emp_id = ?, amount = ?, submitted  = ?, status = ?" 
-					+ " WHERE REQUEST_NUM = ?");
-			
-			stmt.setInt(1, reimbToBeUpdated.getRequestNum());
-			stmt.setInt(2, reimbToBeUpdated.getRequestNum());		
-			stmt.setDouble(3, reimbToBeUpdated.getAmount());
-			stmt.setDate(4, (Date) reimbToBeUpdated.getSubmitted());
-			stmt.setString(5, reimbToBeUpdated.getStatus());
-			
-			int rowsAffected = stmt.executeUpdate();
-			if(rowsAffected == 1) {
-				return reimbToBeUpdated;
-			}
-		} catch (SQLException e) {
-			System.err.println(e);
-		}
+		
 		return null;
 	}
 
@@ -104,23 +74,8 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 	@Override
 	public Reimbursement getReimbByEmpId(int id) {
-		Reimbursement reimb = new Reimbursement();
-		try(Connection conn = ConnectionManager.getConnection()){
-			Statement stmt = conn.createStatement();
-			
-			ResultSet rs = stmt.executeQuery("Select * from reimbursement where emp_id = ?");
-			if(rs.next()) {
-				reimb.setRequestNum(rs.getInt("REQUEST_NUM"));
-				reimb.setEmpId(rs.getInt("EMP_ID"));
-				reimb.setAmount(rs.getDouble("AMOUNT"));
-				reimb.setSubmitted(rs.getDate("SUMBITTED"));
-				reimb.setStatus(rs.getString("STATUS"));
-				return reimb;
-			}
-		} catch (SQLException e) {
-			
-		}
-		return reimb;
+		
+		return null;
 	}
 
 

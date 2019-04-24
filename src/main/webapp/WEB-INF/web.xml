@@ -129,4 +129,14 @@
     <servlet-name>UpdateReimbServlet</servlet-name>
     <url-pattern>/UpdateReimbServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetEmpByIdServlet</display-name>
+    <servlet-name>GetEmpByIdServlet</servlet-name>
+    <servlet-class>com.hksoftworks.web.GetEmpByIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEmpByIdServlet</servlet-name>
+    <url-pattern>/GetEmpByIdServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

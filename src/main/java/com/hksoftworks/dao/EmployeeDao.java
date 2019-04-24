@@ -1,5 +1,6 @@
 package com.hksoftworks.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.hksoftworks.model.Employee;

@@ -2,6 +2,7 @@ package com.hksoftworks.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,17 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hksoftworks.dao.EmployeeDao;
 import com.hksoftworks.dao.EmployeeDaoImpl;
+import com.hksoftworks.model.Employee;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class GetEmpByIdServlet
  */
-public class LoginServlet extends HttpServlet {
+public class GetEmpByIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public GetEmpByIdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,25 +32,22 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println("Entered login servlet");
 		EmployeeDao dao = new EmployeeDaoImpl();
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
+				
+		int empId = Integer.valueOf(request.getParameter("emp_id"));
+		//System.out.println(empId);
+		System.out.println(empId);
 		
-		String n = request.getParameter("username");
-		String p = request.getParameter("password");
-//		System.out.println("Username: " + n + " | Password: " + p);
-		
-		if(dao.getEmployeeByEmailAndPassword(n, p)){
-			RequestDispatcher rd = request.getRequestDispatcher("/homepagemanager.html");
+		if(dao.getEmployeeById(empId) != null) {
+			RequestDispatcher rd = request.getRequestDispatcher("/associatesinfo.html");
 			rd.forward(request, response);
-			
-		} 
-		else {
-			out.print("Sorry, Username or password error");
-			RequestDispatcher rd = request.getRequestDispatcher("index.html");
+		} else {
+			out.print("Invalid Employee Id Entered.");
+			RequestDispatcher rd = request.getRequestDispatcher("/associatesinfo.html");
 			rd.include(request, response);
-		}		
+		}
 		out.close();
 	}
 

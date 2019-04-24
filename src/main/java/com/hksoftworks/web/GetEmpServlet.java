@@ -31,10 +31,10 @@ public class GetEmpServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Entering GetEmpServlet");
+//		System.out.println("Entering GetEmpServlet");
 		response.setContentType("application/json");
 		response.getOutputStream().write(mapper.writeValueAsBytes(empServ.getAllEmployees(request, response)));
-		System.out.println("Resoponse sent succesfully!");
+//		System.out.println("Resoponse sent succesfully!");
 	}
 
 	/**

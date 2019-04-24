@@ -43,17 +43,25 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public Employee getEmployeeById(int id) {
 		
-		try(Connection conn = ConnectionManager.getConnection()){
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM employees WHERE emp_id = " + id);
-			if(rs.next())
-            {
-               return extractEmployeeFromResultSet(rs);
-            }
+		ResultSet rs = null;
+		
+		try(Connection conn = ConnectionManager.getConnection();
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM employees WHERE emp_id = ?");)
+		{
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				return extractEmployeeFromResultSet(rs);
+			} else {
+				System.err.println("No results found");
+				return null;
+			}
+            
         } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-		return null;
+            System.err.println(ex);
+            return null;
+        } 
 	}
 	
 	@Override
@@ -122,10 +130,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public boolean getEmployeeByEmailAndPassword(String username, String password) {
-		Employee emp = new Employee();
+		
 		boolean status = false;
 		try(Connection conn = ConnectionManager.getConnection()){
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM employees WHERE email = ? and pass = ?");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM EMPLOYEES WHERE EMAIL = ? and PASS = ?");
 			
 			stmt.setString(1, username);
 			stmt.setString(2,  password);
