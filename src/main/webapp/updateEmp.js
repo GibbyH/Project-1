@@ -9,22 +9,23 @@ const updateEmp = () => {
 	xhr.onreadystatechange = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
 			const json = xhr.responseText;
-			console.log(json);
+//			console.log(json);
 		}
 	}
 	
 	xhr.open("POST", "http://localhost:4213/Reimbursements/UpdateEmpServlet");
 	xhr.send(JSON.stringify(updateEmpFormData));
+	console.log(updateEmpFormData);
 }
 
 const parseUpdateEmpForm = () => {
 
-	const empIdText = document.getElementById("empId").value;
 	const lastNameText = document.getElementById("lastName").value;
 	const firstNameText = document.getElementById("firstName").value;
 	const emailText = document.getElementById("email").value;
 	const passwordText = document.getElementById("password").value;
 	const managerIdText = document.getElementById("managerId").value;
+	const empIdText = document.getElementById("empId").value;
 
 	return {
 		lastName: lastNameText,

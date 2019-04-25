@@ -9,74 +9,59 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
- 
+import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
+
 import com.hksoftworks.model.Reimbursement;
 import com.hksoftworks.util.ConnectionManager;
 
 public class ReimbursementDaoImpl implements ReimbursementDao {
-	
-	
 
 	@Override
 	public List<Reimbursement> getAllReimbursements() {
-		List<Reimbursement> reimbs = new ArrayList<>();
-		try (Connection conn = ConnectionManager.getConnection()){
+		List<Reimbursement> reimbs = new ArrayList<Reimbursement>();
+		try(Connection conn = ConnectionManager.getConnection()){
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM reimbursements");
-			while (rs.next()) {
-				reimbs.add(new Reimbursement(rs.getInt("REQUEST_NUM"), rs.getInt("EMP_ID"), rs.getString("reason"),
-						rs.getDouble("AMOUNT"),	rs.getInt("manager_id"), rs.getString("STATUS")));
-			}
+			ResultSet rs = stmt.executeQuery("Select * from reimbursements");
+			while(rs.next())
+				reimbs.add(new Reimbursement(rs.getInt("REQUEST_NUM"), rs.getInt("EMP_ID"), rs.getString("REASON"), 
+						rs.getDouble("AMOUNT"), rs.getString("STATUS"), rs.getInt("MANAGER_ID")));
 			return reimbs;
 		} catch (SQLException e) {
-			System.err.println(e);
+			System.err.println("Sql state: " + e.getSQLState());
+			System.err.println("Error code: " + e.getErrorCode());
+			throw new RuntimeException("Failed to get all reimbursements");
 		}
-		return null;
-	}
-
-	@Override
-	public Reimbursement getReimbursementById(int id) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
 	public Reimbursement createReimbursement(Reimbursement reimb) {
-		
-		return null;
-	}
-
-	@Override
-	public Reimbursement updatereimburseement(Reimbursement reimbToBeUpdated) {
-		
-		return null;
-	}
-
-	@Override
-	public long deleteReimbursement(Reimbursement... reimbToBeDeleted) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<Reimbursement> getAllReimbursements(String email) {
-		List<Reimbursement> reimbs = new ArrayList<Reimbursement>();
-		try(Connection conn = ConnectionManager.getConnection()){
-			PreparedStatement stmt = conn.prepareStatement("SELECT * from reimbursements");
-			
-			
-			return reimbs;
-		} catch (Exception e){
-			
+		try (Connection conn = ConnectionManager.getConnection()){
+			PreparedStatement stmt = conn.prepareStatement("insert into reimbursements values(?, ?, ?, ?, ?, ?");
+			stmt.setInt(1, reimb.getRequestNum());
+			stmt.setInt(2, reimb.getEmpId());
+			stmt.setString(3, reimb.getReason());
+			stmt.setDouble(4, reimb.getAmount());
+			stmt.setString(5, reimb.getStatus());
+			stmt.setInt(6, reimb.getApprovedBy());
+			int rowsaffected = stmt.executeUpdate();
+			if(rowsaffected == 1)
+				return reimb;
+			else
+				return null;
+		} catch (SQLException e) {
+			System.err.println("Sql state: " + e.getSQLState());
+			System.err.println("Error code: " + e.getErrorCode());
+			throw new RuntimeException("Failed to create reimbusement");
 		}
-		return null;
 	}
 
 	@Override
-	public Reimbursement getReimbByEmpId(int id) {
-		
+	public Reimbursement updateReimburseement(Reimbursement reimbToBeUpdated) {
 		return null;
 	}
+	
+	
 
+	
 
 }

@@ -15,8 +15,8 @@ import com.hksoftworks.service.EmployeeServiceImpl;
  */
 public class UpdateEmpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	ObjectMapper mapper = new ObjectMapper();
-	EmployeeService empServ = new EmployeeServiceImpl();
+	final ObjectMapper mapper = new ObjectMapper();
+	final EmployeeService empServ = new EmployeeServiceImpl();
        
     /**
      * @see HttpServlet#HttpServlet()

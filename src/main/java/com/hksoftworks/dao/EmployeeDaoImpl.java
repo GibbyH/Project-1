@@ -84,18 +84,23 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			int rowsAffected = stmt.executeUpdate();
 			if (rowsAffected == 1)
 				return emp;
+			else
+				return null;
 		} catch (SQLException e) {
-			System.err.println(e);;
+			System.err.println("Sql state: " + e.getSQLState());
+			System.err.println("Error code: " + e.getErrorCode());
+			throw new RuntimeException("Failed to create employee");
 		}
-		return emp;
+		
 	}
 
 	@Override
 	public Employee updateEmployee(Employee empToBeUpdated) {
 		
 		try(Connection conn = ConnectionManager.getConnection()){
-			PreparedStatement stmt = conn.prepareStatement("UPDATE employees SET last_name = ?, first_name = ?, " +
-		"email = ?, pass = ?, manager id = ? WHERE emp id =?" );
+			PreparedStatement stmt = conn.prepareStatement("Update employees Set last_name = ?, " +
+					"first_name =?, email = ?, manager_id = ? Where emp_id = ?");
+			
 			stmt.setString(1, empToBeUpdated.getLastName());
 			stmt.setString(2, empToBeUpdated.getFirstName());
 			stmt.setString(3, empToBeUpdated.getEmail());
@@ -103,16 +108,19 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			stmt.setInt(5, empToBeUpdated.getManagerId());
 			stmt.setInt(6, empToBeUpdated.getEmpId());
 			
-			// Execute the query determining the number of rows that where affected
+			System.out.println(empToBeUpdated.toString());
+			
 			int rowsAffected = stmt.executeUpdate();
 			if (rowsAffected == 1)
 				return empToBeUpdated;
-
+			else
+				return null;
+			
 		} catch (SQLException e) {
-			System.err.println(e);
+			System.err.println("Sql state: " + e.getSQLState());
+			System.err.println("Error code: " + e.getErrorCode());
+			throw new RuntimeException("Failed to update employee");
 		}
-		return null;
-		
 	}
 
 	@Override

@@ -9,15 +9,15 @@ public class Reimbursement {
 	private int empId;
 	private String reason;
 	private double amount;
-	private int approvedBy;
 	private String status;
+	private int approvedBy;		
 	
 	public Reimbursement() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reimbursement(int requestNum, int empId, String reason, double amount, int approvedBy, String status) {
+	public Reimbursement(int requestNum, int empId, String reason, double amount, String status, int approvedBy) {
 		super();
 		this.requestNum = requestNum;
 		this.empId = empId;

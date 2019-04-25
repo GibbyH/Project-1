@@ -13,15 +13,16 @@ public class ConnectionManager {
 	public static Connection getConnection() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-			return DriverManager.getConnection(props.getProperty("jdbc.url"), 
-					props.getProperty("jdbc.username"), 
-					props.getProperty("jdbc.password"));
+			return DriverManager.getConnection(System.getenv("JDBC_URL"), 
+					System.getenv("JDBC_USERNAME"), 
+					System.getenv("JDBC_PASSWORD"));
 		} catch (SQLException e) {
-			System.err.println("SQL State: " + e.getSQLState());
 			System.err.println("Error Code: " + e.getErrorCode());
-			throw new RuntimeException("Failed to get database connection!");
+			System.err.println("SQL State: " + e.getSQLState());
+			throw new RuntimeException("Failed to get database connection");
 		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Failed to load oracle.jdbc.OracleDriver");
+			System.err.println(e);
+			throw new RuntimeException("Failed to get driver class.");
 		}
 	}
 	
