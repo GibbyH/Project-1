@@ -22,22 +22,22 @@ const populateReimbs = (listOfReimbs) => {
 	for(let reimb of listOfReimbs){
 		const tdRequestNum = document.createElement("td");
 		const tdEmpId = document.createElement("td");
+		const tdReason = document.createElement("td");
 		const tdAmmount = document.createElement("td");
-		const tdSubmitted = document.createElement("td");
 		const tdStatus = document.createElement("td");
 		
 		tdRequestNum.textContent = reimb.requestNum;
 		tdEmpId.textContent = reimb.empId;
+		tdReason.textContent = reimb.reason;
 		tdAmmount.textContent = reimb.amount;
-		tdSubmitted.textContent = reimb.submitted;
 		tdStatus.textContent = reimb.status;
 		
 		const row = document.createElement("tr");
 
 		row.appendChild(tdRequestNum);
 		row.appendChild(tdEmpId);
+		row.appendChild(tdReason);
 		row.appendChild(tdAmmount);
-		row.appendChild(tdSubmitted);
 		row.appendChild(tdStatus);
 		
 		document.getElementById("reimbTable").appendChild(row);

@@ -21,13 +21,14 @@ const parseCreateReimbForm = () => {
 
 	const rqstText = document.getElementById("rqstId").value;
 	const empIdText = document.getElementById("empId").value;
+	const reasonText = document.getElementById("reason").value;
 	const amountText = document.getElementById("amount").value;
 	
 	return {
 		requestNum: rqstText,
 		empId: empIdText,
+		reason: reasonText,
 		amount: amountText,
-		submitted: Date.now(),
 		status: "pending"
 	}
 }

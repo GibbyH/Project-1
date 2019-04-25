@@ -36,13 +36,12 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	@Override
 	public Reimbursement createReimbursement(Reimbursement reimb) {
 		try (Connection conn = ConnectionManager.getConnection()){
-			PreparedStatement stmt = conn.prepareStatement("insert into reimbursements values(?, ?, ?, ?, ?, ?");
+			PreparedStatement stmt = conn.prepareStatement("insert into reimbursements (request_num, emp_id, reason, amount) values(?, ?, ?, ?)");
 			stmt.setInt(1, reimb.getRequestNum());
 			stmt.setInt(2, reimb.getEmpId());
 			stmt.setString(3, reimb.getReason());
 			stmt.setDouble(4, reimb.getAmount());
-			stmt.setString(5, reimb.getStatus());
-			stmt.setInt(6, reimb.getApprovedBy());
+			
 			int rowsaffected = stmt.executeUpdate();
 			if(rowsaffected == 1)
 				return reimb;
