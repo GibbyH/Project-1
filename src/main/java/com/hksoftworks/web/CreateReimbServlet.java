@@ -1,6 +1,8 @@
 package com.hksoftworks.web;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +34,8 @@ public class CreateReimbServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.getOutputStream().write(mapper.writeValueAsBytes(reimbServ.createNewReimb(request, response)));
+		RequestDispatcher rd = request.getRequestDispatcher("/reimbursements.html");
+		rd.forward(request, response);
 	}
 
 	/**

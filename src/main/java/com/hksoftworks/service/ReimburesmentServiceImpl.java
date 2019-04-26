@@ -38,7 +38,7 @@ public class ReimburesmentServiceImpl implements ReimbursementService{
 			final String status = (String) request.getParameter("status");
 			final int rqstNum = Integer.valueOf((String) request.getParameter("requestnum"));
 			System.out.println("Status: " + status + " | RequestNumber" + rqstNum);
-			if(status == "" || status=!= null ) 
+			if(status == "" || status== null ) 
 				return dao.updateReimburseement(status, rqstNum);
 			else 
 				System.out.println("Invalid entries");

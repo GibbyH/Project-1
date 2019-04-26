@@ -35,7 +35,8 @@ public class CreateEmpServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.getOutputStream().write(mapper.writeValueAsBytes(empServ.createEmployee(request, response)));
-		RequestDispatcher rd = request.getRequestDispatcher("associatesinfo.html");
+		RequestDispatcher rd = request.getRequestDispatcher("/associatesinfo.html");
+		rd.forward(request, response);
 	}
 
 	/**
