@@ -13,7 +13,7 @@ const updateReimb = () => {
 		}
 	}
 	
-	xhr.open("POST", "http://localhost:4213/Reimbursements/CreateReimbServlet");
+	xhr.open("POST", "http://localhost:4213/Reimbursements/UpdateRimbServlet");
 	xhr.send(JSON.stringify(updateReimbForm));
 }
 

@@ -34,12 +34,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee updateEmployee(HttpServletRequest request, HttpServletResponse response) {
+	public boolean updateEmployee(HttpServletRequest request, HttpServletResponse response) {
 		try {
 		Employee emp = mapper.readValue(request.getInputStream(), Employee.class);
 		return dao.updateEmployee(emp);
 		} catch (IOException e) {
-			return null;
+			return false;
 		}
 	}
 

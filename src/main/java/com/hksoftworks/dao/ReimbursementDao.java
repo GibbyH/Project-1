@@ -17,6 +17,6 @@ public interface ReimbursementDao {
 //	Reimbursement getReimbursementById(int id);
 //	Reimbursement getReimbByEmpId (int id);
 	Reimbursement createReimbursement(Reimbursement reimb);
-	Reimbursement updateReimburseement(Reimbursement reimbToBeUpdated);
+	boolean updateReimburseement(String status, int rqstNum);
 //	long deleteReimbursement(Reimbursement... reimbToBeDeleted);
 }

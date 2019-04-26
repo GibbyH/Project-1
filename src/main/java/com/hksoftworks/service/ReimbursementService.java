@@ -11,5 +11,5 @@ public interface ReimbursementService {
 
 	List<Reimbursement> getAllReimbursements (HttpServletRequest request, HttpServletResponse response);
 	Reimbursement createNewReimb(HttpServletRequest request, HttpServletResponse response);
-	Reimbursement updateReimbStatus(HttpServletRequest request, HttpServletResponse response);
+	boolean updateReimbStatus(HttpServletRequest request, HttpServletResponse response);
 }

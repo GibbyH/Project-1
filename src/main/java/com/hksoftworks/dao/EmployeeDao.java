@@ -12,6 +12,6 @@ public interface EmployeeDao {
 	boolean getEmployeeByEmailAndPassword(String username, String password);
 	boolean isManager(Employee emp);
 	Employee createEmployee(Employee emp);
-	Employee updateEmployee(Employee empToBeUpdated);
+	boolean updateEmployee(Employee empToBeUpdated);
 	long deleteEmployee(Employee... empToBeDeleted);
 }

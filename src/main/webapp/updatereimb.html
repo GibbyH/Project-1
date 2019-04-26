@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,17 +7,18 @@
     </head>
     <body>
         <h1>Approve Reimbursement</h1>
-        <form class="form">
-            <label for="rqstId">Request Number</label><br>
-            <input type="number" id="rqstId" name="rqstId"><br>
+        <form class="form" method="POST" action="http://localhost:4213/Reimbursements/UpdateReimbServlet">
+            <label for="requestnum">Request Number</label><br>
+            <input type="number" id="requestnum" name="requestnum"><br>
             <select name="status" id="status">
                 <option value="pending">Pending</option>
                 <option value="approved">Approved</option>
                 <option value="denied">Denied</option>
-            </select>
-            <input type="button" name="submit" id="submit" value="Submit Change">
+            </select><br>
+            <input type="submit" name="submit" id="submit" value="Submit Change">
         </form>
         <a href="reimbursements.html"><button>Back</button></a>
-        <script src="updatereimb.js" ></script>
+        
+        
     </body>
 </html>

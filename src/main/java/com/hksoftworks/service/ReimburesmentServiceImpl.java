@@ -33,9 +33,17 @@ public class ReimburesmentServiceImpl implements ReimbursementService{
 	}
 
 	@Override
-	public Reimbursement updateReimbStatus(HttpServletRequest request, HttpServletResponse response) {
+	public boolean updateReimbStatus(HttpServletRequest request, HttpServletResponse response) {
 		
-		return null;
+			final String status = (String) request.getParameter("status");
+			final int rqstNum = Integer.valueOf((String) request.getParameter("requestnum"));
+			System.out.println("Status: " + status + " | RequestNumber" + rqstNum);
+			if(status == "" || status=!= null ) 
+				return dao.updateReimburseement(status, rqstNum);
+			else 
+				System.out.println("Invalid entries");
+				return false;
+		
 	}
 
 }

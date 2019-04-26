@@ -55,8 +55,23 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 
 	@Override
-	public Reimbursement updateReimburseement(Reimbursement reimbToBeUpdated) {
-		return null;
+	public boolean updateReimburseement(String status, int rqstNum) {
+		try(Connection conn = ConnectionManager.getConnection()){
+			PreparedStatement stmt = conn.prepareStatement("Update reimbursements Set status = ? Where request_num = ?");
+			stmt.setString(1, status);
+			stmt.setInt(2, rqstNum);
+			
+			int rowsAffected = stmt.executeUpdate();
+			if(rowsAffected == 1) {
+				return true;
+			}
+			else 
+				return false;				
+		} catch (SQLException e) {
+			System.err.println("Sql state: " + e.getSQLState());
+			System.err.println("Error code: " + e.getErrorCode());
+			throw new RuntimeException("Failed to update reimbusement");
+		}		
 	}
 	
 	

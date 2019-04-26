@@ -95,7 +95,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public Employee updateEmployee(Employee empToBeUpdated) {
+	public boolean updateEmployee(Employee empToBeUpdated) {
 		
 		try(Connection conn = ConnectionManager.getConnection()){
 			PreparedStatement stmt = conn.prepareStatement("Update employees Set last_name = ?, " +
@@ -112,9 +112,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			
 			int rowsAffected = stmt.executeUpdate();
 			if (rowsAffected == 1)
-				return empToBeUpdated;
+				return true;
 			else
-				return null;
+				return false;
 			
 		} catch (SQLException e) {
 			System.err.println("Sql state: " + e.getSQLState());
